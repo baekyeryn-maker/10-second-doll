@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 SECONDS | DOLL CATCHER</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;600;800;900&display=swap');
+
+:root {
+  --pink:#ff75b5;
+  --purple:#8d72ed;
+  --blue:#77d9ef;
+  --dark:#201b35;
+  --bg:#fff8fc;
+}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans KR',sans-serif;
+  color:var(--dark);
+  background:var(--bg);
+}
+nav{
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:space-between;
+  align-items:center;padding:17px 8%;
+  background:#fffaf1ee;backdrop-filter:blur(12px);
+  border-bottom:1px solid #f5ddec;
+}
+.logo{font-family:'Jua';font-size:22px;color:#e85d9f}
+nav a{color:#594d70;text-decoration:none;font-size:13px;margin-left:20px;font-weight:700}
+.hero{
+  min-height:670px;padding:100px 8%;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#ffe0f0,#f1e4ff 55%,#dff8ff);
+}
+.hero:before,.hero:after{
+  content:'✦';position:absolute;color:#fff;
+  font-size:100px;opacity:.6;
+}
+.hero:before{top:70px;left:10%}
+.hero:after{bottom:60px;right:12%}
+.hero-content{position:relative;z-index:1}
+.tag{
+  display:inline-block;padding:9px 18px;border-radius:30px;
+  background:white;color:#d75d9e;font-size:12px;
+  font-weight:900;letter-spacing:2px;margin-bottom:25px;
+}
+h1{
+  font-family:'Jua';font-size:clamp(65px,12vw,125px);
+  line-height:.95;letter-spacing:-4px;
+  color:#e85d9f;text-shadow:5px 6px 0 white;
+}
+h1 span{color:#8d72ed}
+.hero p{margin:30px auto;color:#695d7b;font-size:16px;line-height:1.9}
+.main-btn{
+  display:inline-block;text-decoration:none;
+  background:#e85d9f;color:white;padding:15px 28px;
+  border-radius:30px;font-weight:900;
+  box-shadow:0 6px 0 #c94482;transition:.2s;
+}
+.main-btn:hover{transform:translateY(3px);box-shadow:0 3px 0 #c94482}
+.doll{font-size:95px;margin:25px 0;filter:drop-shadow(0 8px 8px #c58acb55)}
+section{padding:95px 9%;scroll-margin-top:65px}
+.section-label{color:#df6da9;font-size:12px;font-weight:900;letter-spacing:3px}
+h2{font-family:'Jua';font-size:42px;margin:12px 0 18px}
+.sub{color:#84778f;line-height:1.9;font-size:14px}
+.intro{background:white}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:18px;margin-top:40px
+}
+.card{
+ background:#fff8fc;border:1px solid #f5d9e9;
+ border-radius:20px;padding:28px;
+ transition:.2s;
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 30px #e9b6d533}
+.card .emoji{font-size:36px;margin-bottom:18px}
+.card h3{font-size:18px;margin-bottom:12px}
+.card p{font-size:13px;color:#83768e;line-height:1.9}
+.demo{
+ background:linear-gradient(135deg,#29203e,#45335f);
+ color:white;text-align:center;
+}
+.demo .sub{color:#d5c6e7}
+.machine{
+ max-width:390px;margin:40px auto 0;padding:28px;
+ border:5px solid #f49bc9;border-radius:25px;
+ background:linear-gradient(145deg,#fce5f3,#e8dcff);
+ color:#403052;box-shadow:0 0 35px #ff8dc855;
+}
+.machine-top{
+ background:#35294d;color:#9df1ed;
+ padding:12px;border-radius:10px;
+ font-weight:900;letter-spacing:3px;
+}
+.toy{font-size:90px;padding:25px}
+.timer{font-family:'Jua';font-size:65px;color:#e35c9c}
+.demo-btn{
+ border:0;background:#e85d9f;color:white;
+ padding:14px 27px;border-radius:30px;
+ font-size:15px;font-weight:900;cursor:pointer;
+ margin:10px 5px;
+}
+.demo-btn:disabled{opacity:.5;cursor:not-allowed}
+#result{min-height:30px;font-weight:900;color:#e85d9f;margin-top:10px}
+.process{background:#fff4f9}
+.step{
+ display:flex;gap:22px;align-items:flex-start;
+ padding:22px 0;border-bottom:1px solid #f0d9e8
+}
+.num{font-family:'Jua';font-size:30px;color:#e779ae}
+.step p{font-size:13px;color:#81758c;line-height:1.8;margin-top:7px}
+.features{background:#f0edff}
+.feature{
+ background:white;border-radius:20px;padding:27px;
+}
+.feature h3{margin:12px 0}
+.feature p{font-size:13px;color:#84778f;line-height:1.8}
+.gallery{background:white}
+.photo{
+ min-height:180px;border-radius:18px;
+ background:linear-gradient(135deg,#ffe0ef,#e8e0ff);
+ display:flex;align-items:center;justify-content:center;
+ font-size:55px;margin-bottom:13px;
+}
+.photo small{font-size:13px;color:#8a719b}
+footer{
+ background:#29203e;color:white;text-align:center;
+ padding:55px 20px;line-height:2;
+}
+footer strong{color:#ff9bc9;font-family:'Jua';font-size:25px}
+@media(max-width:600px){
+ nav{padding:15px 5%}
+ nav a{font-size:10px;margin-left:8px}
+ section{padding:70px 7%}
+ .hero{min-height:600px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+ <div class="logo">✦ DOLL CATCHER</div>
+ <div>
+  <a href="#about">PROJECT</a>
+  <a href="#demo">DEMO</a>
+  <a href="#process">PROCESS</a>
+  <a href="#gallery">GALLERY</a>
+ </div>
+</nav>
+
+<header class="hero">
+ <div class="hero-content">
+  <div class="tag">MY ENGINEERING PROJECT · 2026</div>
+  <h1>10 <span>SECONDS</span><br>DOLL CATCHER</h1>
+  <div class="doll">🧸</div>
+  <p>
+   단 10초, 당신의 운을 시험할 시간!<br>
+   짧은 순간에 펼쳐지는 짜릿한 인형뽑기 프로젝트.
+  </p>
+  <a href="#about" class="main-btn">PROJECT START →</a>
+ </div>
+</header>
+
+<section class="intro" id="about">
+ <div class="section-label">01 / PROJECT INTRODUCTION</div>
+ <h2>10초 인형뽑기란?</h2>
+ <p class="sub">
+  10초라는 제한 시간 안에 인형을 뽑는 것을 목표로 하는
+  게임형 프로젝트입니다. 제한된 시간 속에서 조작과 판단을 통해
+  인형 획득에 도전하는 것이 핵심입니다.
+ </p>
+ <div class="grid">
+  <div class="card">
+   <div class="emoji">⏱️</div>
+   <h3>10초의 제한 시간</h3>
+   <p>정해진 시간 안에 인형을 획득해야 하는 긴장감 있는 게임 방식입니다.</p>
+  </div>
+  <div class="card">
+   <div class="emoji">🕹️</div>
+   <h3>직접 조작하는 재미</h3>
+   <p>사용자의 조작을 통해 인형뽑기 과정을 경험할 수 있습니다.</p>
+  </div>
+  <div class="card">
+   <div class="emoji">🎁</div>
+   <h3>인형 획득 도전</h3>
+   <p>제한 시간 안에 목표 인형을 뽑는 것을 목표로 합니다.</p>
+  </div>
+ </div>
+</section>
+
+<section class="demo" id="demo">
+ <div class="section-label">02 / INTERACTIVE DEMO</div>
+ <h2>TRY YOUR LUCK!</h2>
+ <p class="sub">10초 안에 인형을 뽑아보세요!</p>
+ <div class="machine">
+  <div class="machine-top">★ DOLL MACHINE ★</div>
+  <div class="toy" id="toy">🧸</div>
+  <div class="timer" id="timer">10.0</div>
+  <p style="font-size:12px;margin:10px">TIME REMAINING</p>
+  <button class="demo-btn" id="start">START GAME</button>
+  <button class="demo-btn" id="catch" disabled>GRAB!</button>
+  <div id="result">준비되면 START를 눌러주세요!</div>
+ </div>
+</section>
+
+<section class="process" id="process">
+ <div class="section-label">03 / OPERATING PROCESS</div>
+ <h2>HOW IT WORKS</h2>
+ <p class="sub">프로젝트의 기본적인 게임 진행 과정입니다.</p>
+ <div style="margin-top:35px">
+  <div class="step">
+   <div class="num">01</div>
+   <div><h3>게임 시작</h3><p>사용자가 게임을 시작하고 제한 시간이 주어집니다.</p></div>
+  </div>
+  <div class="step">
+   <div class="num">02</div>
+   <div><h3>인형 조작</h3><p>사용자가 조작 장치를 이용해 인형뽑기를 진행합니다.</p></div>
+  </div>
+  <div class="step">
+   <div class="num">03</div>
+   <div><h3>10초 카운트다운</h3><p>남은 시간을 확인하며 제한 시간 내에 인형 획득을 시도합니다.</p></div>
+  </div>
+  <div class="step">
+   <div class="num">04</div>
+   <div><h3>결과 확인</h3><p>인형 획득 여부를 확인하고 게임을 마무리합니다.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="features">
+ <div class="section-label">04 / MAIN FEATURES</div>
+ <h2>PROJECT POINT</h2>
+ <div class="grid">
+  <div class="feature">
+   <div class="emoji">⌛</div>
+   <h3>시간 제한 시스템</h3>
+   <p>10초라는 짧은 시간 제한으로 게임의 몰입도와 긴장감을 높입니다.</p>
+  </div>
+  <div class="feature">
+   <div class="emoji">🎮</div>
+   <h3>사용자 조작</h3>
+   <p>사용자의 입력을 통해 게임을 진행할 수 있도록 구성합니다.</p>
+  </div>
+  <div class="feature">
+   <div class="emoji">🧸</div>
+   <h3>인형 획득 시스템</h3>
+   <p>인형을 획득하는 것을 최종 목표로 하는 게임 구조입니다.</p>
+  </div>
+ </div>
+</section>
+
+<section class="gallery" id="gallery">
+ <div class="section-label">05 / PROJECT GALLERY</div>
+ <h2>OUR MAKING STORY</h2>
+ <p class="sub">실제 제작 사진과 완성 작품 사진을 추가해 보세요.</p>
+ <div class="grid">
+  <div>
+   <div class="photo">📷</div>
+   <h3>01. 제작 과정</h3>
+   <p class="sub">제작 중인 작품 사진</p>
+  </div>
+  <div>
+   <div class="photo">⚙️</div>
+   <h3>02. 내부 구조</h3>
+   <p class="sub">기계 및 부품 사진</p>
+  </div>
+  <div>
+   <div class="photo">🧸</div>
+   <h3>03. 최종 완성</h3>
+   <p class="sub">완성된 인형뽑기 기계</p>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <strong>10 SECONDS DOLL CATCHER</strong>
+ <p>작은 인형 하나를 위한 10초의 도전!</p>
+ <p style="font-size:12px;color:#bcb0cf;margin-top:15px">
+  ENGINEERING PROJECT EXHIBITION · 2026<br>
+  TEAM : YOUR TEAM NAME · NAME : YOUR NAME
+ </p>
+</footer>
+
+<script>
+let time = 10;
+let running = false;
+let interval = null;
+
+const timer = document.getElementById('timer');
+const result = document.getElementById('result');
+const start = document.getElementById('start');
+const grab = document.getElementById('catch');
+const toy = document.getElementById('toy');
+
+function finish(message) {
+ clearInterval(interval);
+ running = false;
+ grab.disabled = true;
+ start.disabled = false;
+ result.textContent = message;
+}
+
+start.addEventListener('click', () => {
+ if(running) return;
+ time = 10;
+ running = true;
+ timer.textContent = '10.0';
+ result.textContent = '인형을 잡을 준비를 하세요!';
+ toy.textContent = '🧸';
+ start.disabled = true;
+ grab.disabled = false;
+
+ interval = setInterval(() => {
+  time = Math.max(0, time - 0.1);
+  timer.textContent = time.toFixed(1);
+  if(time <= 0) finish('⏰ TIME OVER! 다시 도전하세요!');
+ }, 100);
+});
+
+grab.addEventListener('click', () => {
+ if(!running) return;
+ finish('🎉 축하합니다! 인형 획득에 도전했어요!');
+ toy.textContent = '🎁';
+});
+</script>
+</body>
+</html>
